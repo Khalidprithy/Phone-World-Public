@@ -1,3 +1,6 @@
+
+
+
 // search input data
 
 const searchPhones = () => {
@@ -60,8 +63,6 @@ const displayPhoneResults = phones => {
         })
     }
 
-
-
 }
 
 const loadPhoneDetails = phoneId => {
@@ -82,13 +83,13 @@ const displayPhoneDetails = phone => {
                 <img src="${phone.image}" class="card-img-top w-25" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.name}</h5>
-                  <p class="card-text">${phone.releaseDate}</p>
+                  <p class="card-text">${phone.releaseDate ? phone.releaseDate : 'No release date found'}</p>
                 </div>
                 <div>
                  <ul class="list-group list-group-flush bg-secondary">
                     <li class="list-group-item">Brand: ${phone.brand}</li>
                     <li class="list-group-item">Storage: ${phone.mainFeatures.storage}</li>
-                    <li class="list-group-item">Chipset: ${phone.mainFeatures.chipSet}</li>
+                    <li class="list-group-item">Chipset: ${phone.mainFeatures.chipSet ? phone.mainFeatures.chipSet : 'No chipset found'}</li>
                     <li class="list-group-item">Display Size: ${phone.mainFeatures.displaySize}</li>
                     <li class="list-group-item">Sensors: ${phone.mainFeatures.sensors}</li>
                  </ul>
