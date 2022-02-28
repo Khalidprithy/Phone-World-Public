@@ -11,51 +11,28 @@
     <title>Phone world</title>
   </head>
   <body>
+      <!-- Website Title and logo -->
     <div class="d-flex justify-content-center align-items-center my-4">
-        <h1 class="text-center"><span class="text-danger">Phone</span>World</h1>
+        <h1 class="text-center"><span class="text-primary">Phone</span>World</h1>
         <img style="width: 60px;" src="images/mobile-icon.jpg" alt="">
     </div>
+    <!-- Search area -->
     <div class="input-group mb-3 w-50 mx-auto">
-        <input type="text" class="form-control" placeholder="Search Phone" aria-label="Search Phone" aria-describedby="button-addon2">
-        <button class="btn btn-outline-success" type="button" id="button-addon2">Search</button>
-      </div>
+        <input id="search-field" type="text" class="form-control" placeholder="Search Phone" aria-label="Search Phone">
+        <button onclick="searchPhones()" class="btn btn-outline-success" type="button">Search</button>
+    </div>
 
-      <div class="row row-cols-1 row-cols-lg-3 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
+      <!-- Phone Details Info -->
+    <div id="phone-details" class="container d-flex justify-content-center">
+        <div class="phone-container">
         </div>
+    </div>
+
+
+      <!-- Search Results -->
+      <div id="search-results" class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4 mx-3">
         <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
+          
         </div>
       </div>
 
