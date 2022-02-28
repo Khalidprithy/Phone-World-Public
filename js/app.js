@@ -1,16 +1,14 @@
-
-
-
 // search input data
 
 const searchPhones = () => {
     const searchField = document.getElementById('search-field');
     const noInput = document.getElementById('no-input');
+    const noResult = document.getElementById('no-result');
     const searchText = searchField.value;
-    console.log(searchText);
     // clear input
     searchField.value = '';
     noInput.textContent = '';
+    noResult.textContent = '';
 
     if (searchText == '') {
         const div = document.createElement('div');
@@ -45,7 +43,6 @@ const displayPhoneResults = phones => {
     }
     else {
         phones.forEach(phone => {
-            console.log(phone);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -73,7 +70,6 @@ const loadPhoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phone => {
-    console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div');
