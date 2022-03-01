@@ -7,3 +7,7 @@ header{
 main{
     font-family: 'Ubuntu', sans-serif;
 }
+
+#spinner{
+    display: none;
+}

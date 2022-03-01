@@ -28,12 +28,11 @@
       <!-- Search area -->
       <div class="input-group mb-3 w-50 mx-auto">
         <input id="search-field" type="text" class="form-control" placeholder="Search Phone" aria-label="Search Phone">
-        <button onclick="searchPhones()" class="btn btn-outline-success" type="button">Search</button>
-      
+        <button onclick="searchPhones()" class="btn btn-outline-success" type="button">Search</button> 
       </div>
-
     </header>
-     
+
+
     <!-- Error Message 1 -->
     <div class="text-center" id="no-result">
     </div>
@@ -42,7 +41,11 @@
     </div>
     <!-- Spinner -->
     <div id="spinner">
-      
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </div>
 
     <main>
@@ -51,6 +54,8 @@
         <div class="phone-container">
         </div>
     </div>
+
+   
 
 
     <!-- Search Results -->
