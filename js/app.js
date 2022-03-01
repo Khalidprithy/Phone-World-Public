@@ -60,7 +60,7 @@ const displayPhoneResults = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-            <div class="card h-100 border-0 mx-auto p-3">
+            <div class="card h-100 border-0 mx-auto p-3 shadow">
                 <img src="${phone.image}" class="card-img-top w-50 mt-3" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.phone_name}</h5>
@@ -108,16 +108,17 @@ const displayPhoneDetails = phone => {
                     <li class="list-group-item"> <span class="fw-bold">Display Size: </span> ${phone.mainFeatures.displaySize}</li>
                     <li class="list-group-item"> <span class="fw-bold">Sensors: </span> ${(phone.mainFeatures.sensors).slice(0, 5)}</li>
                     <strong class="text-white ms-3">Other Features</strong>
-                    <li class="list-group-item"> <span class="fw-bold">Bluetooth: </span> ${other ? other.Bluetooth : 'Not Found'}</li>  
-                    <li class="list-group-item"> <span class="fw-bold">GPS: </span> ${other ? other.GPS : 'Not Found'}</li>  
-                    <li class="list-group-item"> <span class="fw-bold">NFC: </span> ${other ? other.NFC : 'Not Found'}</li>  
-                    <li class="list-group-item"> <span class="fw-bold">Radio: </span> ${other ? other.Radio : 'Not Found'}</li>  
-                    <li class="list-group-item"> <span class="fw-bold">USB: </span> ${other ? other.USB : 'Not Found'}</li>  
-                    <li class="list-group-item"> <span class="fw-bold">WLAN: </span> ${other ? other.WLAN : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">Bluetooth: </span> ${other ? other.Bluetooth : 'not available'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">GPS: </span> ${other ? other.GPS : 'not available'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">NFC: </span> ${other ? other.NFC : 'not available'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">Radio: </span> ${other ? other.Radio : 'not available'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">USB: </span> ${other ? other.USB : 'not available'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">WLAN: </span> ${other ? other.WLAN : 'not available'}</li>  
                  </ul>
                 </div>
     </div>
     
     `;
     phoneDetails.appendChild(div);
+    window.scrollTo(0, 200);
 }
