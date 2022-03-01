@@ -27,7 +27,7 @@ const searchPhones = () => {
         const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => displayPhoneResults(data.data))
+            .then(data => displayPhoneResults(data.data.slice(0, 20)))
     }
 }
 
@@ -59,8 +59,8 @@ const displayPhoneResults = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-            <div class="card h-100 border-0 mx-auto">
-                <img src="${phone.image}" class="card-img-top w-50 mt-3" alt="...">
+            <div class="card h-100 border-0 mx-auto p-3">
+                <img src="${phone.image}" class="card-img-top w-25 mt-3" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.phone_name}</h5>
                   <p class="card-text">Brand: ${phone.brand}</p>
@@ -89,9 +89,10 @@ const displayPhoneDetails = phone => {
     phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('phone-container');
+    const other = phone.others;
     div.innerHTML = `
     <div class="card bg-light" style="width: 18rem;">
-                <img src="${phone.image}" class="mx-auto w-50 mt-2" alt="...">
+                <img src="${phone.image}" class="mx-auto w-75 mt-2" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.name}</h5>
                   <p class="card-text">${phone.releaseDate ? phone.releaseDate : 'No release date found'}</p>
@@ -105,7 +106,8 @@ const displayPhoneDetails = phone => {
                     <li class="list-group-item"><span class="fw-bold">Chipset: </span> ${phone.mainFeatures.chipSet ? phone.mainFeatures.chipSet : 'No chipset found'}</li>
                     <li class="list-group-item"> <span class="fw-bold">Display Size: </span> ${phone.mainFeatures.displaySize}</li>
                     <li class="list-group-item"> <span class="fw-bold">Sensors: </span> ${(phone.mainFeatures.sensors).slice(0, 5)}</li>
-                    <strong class="text-white ms-3">Other Features</strong>             
+                    <strong class="text-white ms-3">Other Features</strong>
+                    <li class="list-group-item"> <span class="fw-bold">Bluetooth: </span> ${other.Bluetooth ? other.Bluetooth : 'Not Found'}</li>  
                  </ul>
                 </div>
     </div>
