@@ -46,7 +46,7 @@ const displayPhoneResults = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-            <div class="card h-100 border-0">
+            <div class="card h-100 border-0 mx-auto">
                 <img src="${phone.image}" class="card-img-top w-50 mt-3" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.phone_name}</h5>
@@ -62,32 +62,34 @@ const displayPhoneResults = phones => {
 
 }
 
-const loadPhoneDetails = phoneId => {
+const loadPhoneDetails = async phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayPhoneDetails(data.data))
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhoneDetails(data.data);
 }
 
 const displayPhoneDetails = phone => {
+    console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('phone-container');
     div.innerHTML = `
-    <div class="card" style="width: 18rem;">
-                <img src="${phone.image}" class="card-img-top w-25" alt="...">
+    <div class="card bg-light" style="width: 16rem;">
+                <img src="${phone.image}" class="mx-auto w-50 mt-2" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.name}</h5>
                   <p class="card-text">${phone.releaseDate ? phone.releaseDate : 'No release date found'}</p>
                 </div>
                 <div>
                  <ul class="list-group list-group-flush bg-secondary">
-                    <li class="list-group-item">Brand: ${phone.brand}</li>
-                    <li class="list-group-item">Storage: ${phone.mainFeatures.storage}</li>
-                    <li class="list-group-item">Chipset: ${phone.mainFeatures.chipSet ? phone.mainFeatures.chipSet : 'No chipset found'}</li>
-                    <li class="list-group-item">Display Size: ${phone.mainFeatures.displaySize}</li>
-                    <li class="list-group-item">Sensors: ${phone.mainFeatures.sensors}</li>
+                    <li class="list-group-item"><span class="fw-bold">Brand: </span>${phone.brand}</li>
+                    <li class="list-group-item"><span class="fw-bold">Storage: </span>${phone.mainFeatures.storage}</li>
+                    <li class="list-group-item"><span class="fw-bold">Storage: </span>Chipset: ${phone.mainFeatures.chipSet ? phone.mainFeatures.chipSet : 'No chipset found'}</li>
+                    <li class="list-group-item"> <span class="fw-bold">Display Size: </span> ${phone.mainFeatures.displaySize}</li>
+                    <li class="list-group-item"> <span class="fw-bold">Sensors: </span> ${phone.mainFeatures.sensors}</li>
+                    <li class="list-group-item"> <span class="fw-bold">Others: </span> ${phone.others}</li>
                  </ul>
                 </div>
     </div>
