@@ -6,9 +6,9 @@ const searchPhones = () => {
     const noResult = document.getElementById('no-result');
     const phoneDetails = document.getElementById('phone-details');
     const searchText = searchField.value;
-
+    // Show sippner
     spinnerStyle('block');
-    // clear input
+    // clear input & search 
     searchField.value = '';
     noInput.textContent = '';
     noResult.textContent = '';
@@ -37,14 +37,14 @@ const spinnerStyle = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
 }
 
+// Display phone search results
 
 const displayPhoneResults = phones => {
     const searchResults = document.getElementById('search-results');
     const noResult = document.getElementById('no-result');
     searchResults.textContent = '';
     noResult.textContent = '';
-
-
+    // No result message
     if (phones.length === 0) {
         const div = document.createElement('div');
         div.innerHTML = `
@@ -52,7 +52,6 @@ const displayPhoneResults = phones => {
         `;
         noResult.appendChild(div);
         spinnerStyle('none');
-
     }
     else {
         phones.forEach(phone => {
@@ -71,18 +70,19 @@ const displayPhoneResults = phones => {
             `;
             searchResults.appendChild(div);
         });
+        // hide spinner
         spinnerStyle('none');
     }
 
 }
-
+// fetch phone details by ID
 const loadPhoneDetails = async phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     const res = await fetch(url);
     const data = await res.json();
     displayPhoneDetails(data.data);
 }
-
+// Display phone details
 const displayPhoneDetails = phone => {
     console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
@@ -107,15 +107,16 @@ const displayPhoneDetails = phone => {
                     <li class="list-group-item"> <span class="fw-bold">Display Size: </span> ${phone.mainFeatures.displaySize}</li>
                     <li class="list-group-item"> <span class="fw-bold">Sensors: </span> ${(phone.mainFeatures.sensors).slice(0, 5)}</li>
                     <strong class="text-white ms-3">Other Features</strong>
-                    <li class="list-group-item"> <span class="fw-bold">Bluetooth: </span> ${other.Bluetooth ? other.Bluetooth : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">Bluetooth: </span> ${other ? other.Bluetooth : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">GPS: </span> ${other ? other.GPS : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">NFC: </span> ${other ? other.NFC : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">Radio: </span> ${other ? other.Radio : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">USB: </span> ${other ? other.USB : 'Not Found'}</li>  
+                    <li class="list-group-item"> <span class="fw-bold">WLAN: </span> ${other ? other.WLAN : 'Not Found'}</li>  
                  </ul>
                 </div>
     </div>
     
     `;
     phoneDetails.appendChild(div);
-}
-
-const loadOthers = other => {
-    console.log(other)
 }
