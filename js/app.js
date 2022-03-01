@@ -5,6 +5,7 @@ const searchPhones = () => {
     const noInput = document.getElementById('no-input');
     const noResult = document.getElementById('no-result');
     const phoneDetails = document.getElementById('phone-details');
+    const searchResults = document.getElementById('search-results');
     const searchText = searchField.value;
     // Show sippner
     spinnerStyle('block');
@@ -13,6 +14,7 @@ const searchPhones = () => {
     noInput.textContent = '';
     noResult.textContent = '';
     phoneDetails.textContent = '';
+    searchResults.textContent = '';
 
     if (searchText == '') {
         const div = document.createElement('div');
@@ -59,7 +61,7 @@ const displayPhoneResults = phones => {
             div.classList.add('col');
             div.innerHTML = `
             <div class="card h-100 border-0 mx-auto p-3">
-                <img src="${phone.image}" class="card-img-top w-25 mt-3" alt="...">
+                <img src="${phone.image}" class="card-img-top w-50 mt-3" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${phone.phone_name}</h5>
                   <p class="card-text">Brand: ${phone.brand}</p>
@@ -73,7 +75,6 @@ const displayPhoneResults = phones => {
         // hide spinner
         spinnerStyle('none');
     }
-
 }
 // fetch phone details by ID
 const loadPhoneDetails = async phoneId => {
